@@ -12,7 +12,10 @@ public class Game_Blinking : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        timer = Time.time;
+        sphere1.GetComponent<Renderer>().enabled = false;
+        sphere2.GetComponent<Renderer>().enabled = false;
+        cube.GetComponent<Renderer>().enabled = false;
+        timer = Time.deltaTime;
 
     }
 	
@@ -21,10 +24,33 @@ public class Game_Blinking : MonoBehaviour
     {
         print("Timer is at :"+timer);
 
-	
-	}
-    public void renderOn(GameObject object)
-    {
+        if (timer >= 2)
+        {
+            renderOn(sphere1);
+        }
+        if (timer >= 3)
+        {
+            renderOn(sphere2);
+        }
+        if (timer >= 4)
+        {
+            renderOn(cube);
+        }
+        if(timer > 5)
+        {
+            renderOff(sphere1);
+            renderOff(sphere2);
+            renderOff(cube);
+        }
 
+    }
+    public void renderOn(GameObject ball)
+    {
+        ball.GetComponent<Renderer>().enabled = true;
+
+    }
+    public void renderOff(GameObject ball)
+    {
+        ball.GetComponent<Renderer>().enabled = false;
     }
 }
