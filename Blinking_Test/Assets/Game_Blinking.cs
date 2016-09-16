@@ -7,7 +7,7 @@ public class Game_Blinking : MonoBehaviour
     public GameObject sphere1;
     public GameObject sphere2;
     public GameObject cube;
-    float timer;
+    float timer = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -15,13 +15,14 @@ public class Game_Blinking : MonoBehaviour
         sphere1.GetComponent<Renderer>().enabled = false;
         sphere2.GetComponent<Renderer>().enabled = false;
         cube.GetComponent<Renderer>().enabled = false;
-        timer = Time.deltaTime;
+        
 
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        timer += Time.deltaTime;
         print("Timer is at :"+timer);
 
         if (timer >= 2)
